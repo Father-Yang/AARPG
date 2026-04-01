@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://b2dgvdwpr5ydu" path="res://Player/Scripts/player.gd" id="1_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://btmr5r2plgxw3" path="res://Player/Sprites/ExamplePlayerSprite.png" id="2_btcbx"]
+[ext_resource type="Script" uid="uid://btpd7ndypbfqb" path="res://Player/Scripts/player_state_machine.gd" id="3_gwnis"]
+[ext_resource type="Script" uid="uid://1wm0ai8qjn71" path="res://Player/Scripts/state_idle.gd" id="4_fhl08"]
+[ext_resource type="Script" uid="uid://dko6redtw6hlt" path="res://Player/Scripts/state_walk.gd" id="5_k53q1"]
 
 [sub_resource type="Animation" id="Animation_btcbx"]
 length = 0.001
@@ -131,10 +134,12 @@ _data = {
 &"walk_up": SubResource("Animation_od3ui")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ntmi"]
+radius = 12.0
+height = 42.0
+
 [node name="Player" type="CharacterBody2D" unique_id=1832212024]
 script = ExtResource("1_4ntmi")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=731808415]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=19233572]
 texture = ExtResource("2_btcbx")
@@ -143,3 +148,20 @@ hframes = 21
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2109971987]
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_btcbx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=731808415]
+shape = SubResource("CapsuleShape2D_4ntmi")
+
+[node name="StateMachine" type="Node" parent="." unique_id=2030610111]
+script = ExtResource("3_gwnis")
+metadata/_custom_type_script = "uid://btpd7ndypbfqb"
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=2017524009]
+unique_name_in_owner = true
+script = ExtResource("4_fhl08")
+metadata/_custom_type_script = "uid://bcpeg2lusu217"
+
+[node name="Walk" type="Node" parent="StateMachine" unique_id=2035505009]
+unique_name_in_owner = true
+script = ExtResource("5_k53q1")
+metadata/_custom_type_script = "uid://bcpeg2lusu217"
