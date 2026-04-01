@@ -1,17 +1,7 @@
 [gd_scene format=3 uid="uid://wgf5stsrwi40"]
 
-[ext_resource type="Texture2D" uid="uid://btmr5r2plgxw3" path="res://Player/Sprites/ExamplePlayerSprite.png" id="1_rupst"]
-[ext_resource type="Script" uid="uid://b2dgvdwpr5ydu" path="res://Player/Scripts/player.gd" id="1_wt17y"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wt17y"]
-atlas = ExtResource("1_rupst")
+[ext_resource type="PackedScene" uid="uid://b4sse476kdci4" path="res://Player/player.tscn" id="1_rupst"]
 
 [node name="Playground" type="Node2D" unique_id=533716461]
 
-[node name="Player" type="CharacterBody2D" parent="." unique_id=1839227457]
-script = ExtResource("1_wt17y")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=298636792]
-
-[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=789102816]
-texture = SubResource("AtlasTexture_wt17y")
+[node name="Player" parent="." unique_id=1832212024 instance=ExtResource("1_rupst")]
