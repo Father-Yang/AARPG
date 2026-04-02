@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://wgf5stsrwi40"]
 
 [ext_resource type="PackedScene" uid="uid://b4sse476kdci4" path="res://Player/player.tscn" id="1_rupst"]
+[ext_resource type="PackedScene" uid="uid://f11ona1mnlbo" path="res://TileMap/grass-01.tscn" id="2_wt17y"]
 
 [node name="Playground" type="Node2D" unique_id=533716461]
 
 [node name="Player" parent="." unique_id=1832212024 instance=ExtResource("1_rupst")]
+
+[node name="Grass01" parent="." unique_id=1394508690 instance=ExtResource("2_wt17y")]
