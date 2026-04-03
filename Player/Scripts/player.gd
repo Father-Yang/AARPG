@@ -13,7 +13,13 @@ func _ready() -> void:
 		state_machine.initialize(self)
 
 func _process(delta: float) -> void:
+
+	#tip 获取player方向的方法有两种
 	direction = Input.get_vector("move_left","move_right","move_up","move_down")
+	#direction = Vector2(
+		#Input.get_axis("move_left","move_right"),
+		#Input.get_axis("move_up","move_down")
+	#).normalized()
 
 func _physics_process(delta: float) -> void:
 	move_and_slide()
@@ -35,6 +41,9 @@ func set_direction() -> bool:
 	
 
 func update_animation(state:String) -> void:
+	animation_player.play(state + "_" + animation_direction())  
+	
+func animation_direction() -> String:
 	var anim_dir:String = ""
 	if cardinal_direction == Vector2.DOWN:
 		anim_dir = "down"
@@ -42,7 +51,6 @@ func update_animation(state:String) -> void:
 		anim_dir = "up"
 	else:
 		anim_dir = "side"
-		
-	animation_player.play(state + "_" + anim_dir)  
+	return anim_dir
 	
 	
