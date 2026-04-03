@@ -2,6 +2,7 @@ extends State
 class_name StateIdle
 
 @onready var walk: StateWalk = %Walk
+@onready var attack: StateAttack = %Attack
 
 func enter() -> void:
 	player.update_animation("idle")

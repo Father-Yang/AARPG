@@ -13,7 +13,6 @@ func _ready() -> void:
 		state_machine.initialize(self)
 
 func _process(delta: float) -> void:
-
 	#tip 获取player方向的方法有两种
 	direction = Input.get_vector("move_left","move_right","move_up","move_down")
 	#direction = Vector2(
