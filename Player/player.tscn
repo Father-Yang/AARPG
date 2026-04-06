@@ -7,12 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://0ubew8h45od7" path="res://Player/Sprites/AttackSprite01.png" id="3_vtle1"]
 [ext_resource type="Script" uid="uid://1wm0ai8qjn71" path="res://Player/Scripts/state_idle.gd" id="4_fhl08"]
 [ext_resource type="Script" uid="uid://dko6redtw6hlt" path="res://Player/Scripts/state_walk.gd" id="5_k53q1"]
+[ext_resource type="PackedScene" uid="uid://xjojbl1e3882" path="res://GeneralNodes/HitBox/hit_box.tscn" id="5_x3vf3"]
 [ext_resource type="Script" uid="uid://6njgmorvs44k" path="res://Player/Scripts/state_attack.gd" id="6_fhl08"]
 [ext_resource type="AudioStream" uid="uid://ch08vlqyq446d" path="res://Player/Audio/SwordSwoosh.wav" id="8_od3ui"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ntmi"]
-radius = 12.0
-height = 42.0
+radius = 7.0
+height = 14.0
 
 [sub_resource type="Animation" id="Animation_p5o4e"]
 length = 0.001
@@ -246,6 +247,9 @@ _data = {
 &"no_attack": SubResource("Animation_lfmf2")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_5htga"]
+radius = 19.026299
+
 [sub_resource type="Animation" id="Animation_btcbx"]
 length = 0.001
 tracks/0/type = "value"
@@ -259,6 +263,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player/Sprite2D/HitBox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_00tjw"]
@@ -276,6 +292,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [21, 23]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player/Sprite2D/HitBox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0, 17), Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_apopc"]
 resource_name = "attack_side"
@@ -292,6 +320,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [27, 29]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player/Sprite2D/HitBox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(18, 0), Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_x3vf3"]
 resource_name = "attack_up"
@@ -307,6 +347,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [24, 26]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player/Sprite2D/HitBox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0, -18), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_4ntmi"]
@@ -426,12 +478,14 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" unique_id=1832212024]
+position = Vector2(0, -22)
 collision_mask = 16
 motion_mode = 1
 wall_min_slide_angle = 0.17453292
 script = ExtResource("1_4ntmi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=731808415]
+position = Vector2(0, 13)
 shape = SubResource("CapsuleShape2D_4ntmi")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=19233572]
@@ -453,6 +507,14 @@ hframes = 12
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_p5o4e")
 autoplay = &"no_attack"
+
+[node name="HitBox" parent="Sprite2D" unique_id=1407551700 instance=ExtResource("5_x3vf3")]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/HitBox" unique_id=169428197]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_5htga")
+debug_color = Color(0.99607843, 0, 0.23529412, 0.15686275)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2109971987]
 root_node = NodePath("../..")
