@@ -1,24 +1,21 @@
 extends CharacterBody2D
-class_name Player
+class_name Enemy
 
+signal direction_changed(new_direction:Vector2)
+signal enemy_damaged()
+
+@export var hp:int = 3
+
+var cardinal_direction:Vector2 = Vector2.DOWN #基础方向
 var direction:Vector2 = Vector2.ZERO
-var cardinal_direction:Vector2 = Vector2.DOWN
+var player:Player
+var invulnerable:bool = false #无敌状态
 
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
-@onready var state_machine: PlayerStateMachine = $StateMachine
-
-func _ready() -> void:
-	if state_machine:
-		state_machine.initialize(self)
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _process(_delta: float) -> void:
-	#tip 获取player方向的方法有两种
-	direction = Input.get_vector("move_left","move_right","move_up","move_down")
-	#direction = Vector2(
-		#Input.get_axis("move_left","move_right"),
-		#Input.get_axis("move_up","move_down")
-	#).normalized()
+	pass
 
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
@@ -51,5 +48,6 @@ func animation_direction() -> String:
 	else:
 		anim_dir = "side"
 	return anim_dir
-	
+
+
 	

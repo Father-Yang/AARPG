@@ -42,11 +42,11 @@ func process(delta:float) -> State:
 			return idle
 	return null
 	
-func physics(delta:float) -> State:
+func physics(_delta:float) -> State:
 	return null
 	
-func handle_input(event:InputEvent) ->  State:
+func handle_input(_event:InputEvent) ->  State:
 	return null
 	
-func _on_attack_finished(anim_name:String) -> void:
+func _on_attack_finished(_anim_name:String) -> void:
 	attacking = false
