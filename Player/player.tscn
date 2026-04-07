@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://xjojbl1e3882" path="res://GeneralNodes/HitBox/hit_box.tscn" id="5_x3vf3"]
 [ext_resource type="Script" uid="uid://6njgmorvs44k" path="res://Player/Scripts/state_attack.gd" id="6_fhl08"]
 [ext_resource type="AudioStream" uid="uid://ch08vlqyq446d" path="res://Player/Audio/SwordSwoosh.wav" id="8_od3ui"]
+[ext_resource type="Script" uid="uid://dyrpb7w8pgp2m" path="res://Player/Scripts/player_camera.gd" id="11_apopc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ntmi"]
 radius = 7.0
@@ -532,6 +533,7 @@ metadata/_custom_type_script = "uid://bcpeg2lusu217"
 [node name="Walk" type="Node" parent="StateMachine" unique_id=2035505009]
 unique_name_in_owner = true
 script = ExtResource("5_k53q1")
+move_speed = 400.0
 metadata/_custom_type_script = "uid://bcpeg2lusu217"
 
 [node name="Attack" type="Node" parent="StateMachine" unique_id=589937708]
@@ -541,6 +543,8 @@ attack_sound = ExtResource("8_od3ui")
 metadata/_custom_type_script = "uid://bcpeg2lusu217"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1690576]
+editor_draw_limits = true
+script = ExtResource("11_apopc")
 
 [node name="Audio" type="Node2D" parent="." unique_id=225397639]
 
