@@ -533,7 +533,6 @@ metadata/_custom_type_script = "uid://bcpeg2lusu217"
 [node name="Walk" type="Node" parent="StateMachine" unique_id=2035505009]
 unique_name_in_owner = true
 script = ExtResource("5_k53q1")
-move_speed = 400.0
 metadata/_custom_type_script = "uid://bcpeg2lusu217"
 
 [node name="Attack" type="Node" parent="StateMachine" unique_id=589937708]
@@ -550,3 +549,4 @@ script = ExtResource("11_apopc")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Audio" unique_id=1885271502]
 max_polyphony = 4
+bus = &"VFX"

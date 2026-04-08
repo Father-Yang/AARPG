@@ -3,6 +3,7 @@ class_name Enemy
 
 signal direction_changed(new_direction:Vector2)
 signal enemy_damaged()
+signal enemy_destroyed()
 
 @export var hp:int = 3
 
@@ -14,9 +15,12 @@ var invulnerable:bool = false #无敌状态
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var enemy_state_machine: EnemyStateMachine = $EnemyStateMachine
+@onready var hurt_box: HurtBox = $HurtBox
+
 
 func _ready() -> void:
 	player = GlobalPlayerManager.player
+	hurt_box.damaged.connect(on_damaged)
 	if enemy_state_machine:
 		enemy_state_machine.initialize(self)
 
@@ -56,5 +60,12 @@ func animation_direction() -> String:
 		anim_dir = "side"
 	return anim_dir
 
-
+func on_damaged(damage:int) -> void:
+	if invulnerable:
+		return
+	hp -= damage
+	if hp > 0:
+		enemy_damaged.emit()
+	else:
+		enemy_destroyed.emit()	
 	
