@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://d1r51yyb4gv5e" path="res://Enemies/Slime/Sprites/DestroySmoke.png" id="10_fjr0p"]
 [ext_resource type="Script" uid="uid://d11ml4efvt71b" path="res://Enemies/Scripts/enemy_state_stun.gd" id="10_pydiu"]
 [ext_resource type="Script" uid="uid://dye26hmoh1nmf" path="res://Enemies/Scripts/enemy_state_destroy.gd" id="11_2qn7y"]
+[ext_resource type="PackedScene" uid="uid://xjojbl1e3882" path="res://GeneralNodes/HitBox/hit_box.tscn" id="13_843tw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wwfkb"]
 radius = 4.0
@@ -744,6 +745,9 @@ _data = {
 &"destroy": SubResource("Animation_843tw")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_t1krp"]
+radius = 12.0
+
 [node name="Slime" type="CharacterBody2D" unique_id=11531262]
 collision_layer = 256
 collision_mask = 16
@@ -807,3 +811,11 @@ hframes = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DestroyEffectSprite" unique_id=776214499]
 libraries/ = SubResource("AnimationLibrary_t1krp")
+
+[node name="HitBox" parent="." unique_id=1407551700 instance=ExtResource("13_843tw")]
+collision_mask = 2
+monitoring = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=808651250]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_t1krp")

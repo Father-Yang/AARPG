@@ -2,8 +2,8 @@ extends CharacterBody2D
 class_name Enemy
 
 signal direction_changed(new_direction:Vector2)
-signal enemy_damaged()
-signal enemy_destroyed()
+signal enemy_damaged(hit_box:HitBox)
+signal enemy_destroyed(hit_box:HitBox)
 
 @export var hp:int = 3
 
@@ -20,7 +20,7 @@ var invulnerable:bool = false #无敌状态
 
 func _ready() -> void:
 	player = GlobalPlayerManager.player
-	hurt_box.damaged.connect(on_damaged)
+	hurt_box.take_damaged.connect(on_take_damaged)
 	if enemy_state_machine:
 		enemy_state_machine.initialize(self)
 
@@ -60,12 +60,12 @@ func animation_direction() -> String:
 		anim_dir = "side"
 	return anim_dir
 
-func on_damaged(damage:int) -> void:
+func on_take_damaged(hit_box:HitBox) -> void:
 	if invulnerable:
 		return
-	hp -= damage
+	hp -= hit_box.damage
 	if hp > 0:
-		enemy_damaged.emit()
+		enemy_damaged.emit(hit_box)
 	else:
-		enemy_destroyed.emit()	
+		enemy_destroyed.emit(hit_box)	
 	

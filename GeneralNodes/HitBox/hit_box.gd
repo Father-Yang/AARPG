@@ -14,4 +14,4 @@ func _process(_delta: float) -> void:
 	
 func on_area_entered(area:Area2D) -> void:
 	if area is HurtBox:  #tip 判断如果受击框，则对它造成伤害
-		area.take_damage(damage)
+		area.take_damage(self) # 传递整个对象

@@ -21,10 +21,17 @@ func initialize(_player:Player) -> void:
 	for node in get_children():
 		if node is State:
 			states.append(node)
-	if states.size() > 0:
-		states[0].player = _player
-		change_state(states[0]) #执行默认状态
-		process_mode = Node.PROCESS_MODE_INHERIT #继承模式
+	
+	if states.size() == 0: return 
+	
+	states[0].player = _player
+	states[0].player_state_machine = self
+	
+	for state in states:
+		state.init()
+	
+	change_state(states[0]) #执行默认状态
+	process_mode = Node.PROCESS_MODE_INHERIT #继承模式
 
 func change_state(new_state:State) -> void:
 	if new_state == null || current_state == new_state:

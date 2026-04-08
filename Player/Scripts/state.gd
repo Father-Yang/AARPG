@@ -2,9 +2,13 @@ extends Node
 class_name State
 
 static var player:Player
+static var player_state_machine:PlayerStateMachine #静态变量
 
 func _ready() -> void:
 	pass # Replace with function body.
+
+func init() -> void:
+	pass
 	
 func enter() -> void:
 	pass

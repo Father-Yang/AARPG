@@ -1,15 +1,25 @@
 extends CharacterBody2D
 class_name Player
 
-var direction:Vector2 = Vector2.ZERO
-var cardinal_direction:Vector2 = Vector2.DOWN
+signal player_damaged(hit_box:HitBox)
+signal player_destroyed(hit_box:HitBox)
+
+@export var max_hp:int = 6
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var effect_animation_player: AnimationPlayer = $EffectAnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var state_machine: PlayerStateMachine = $StateMachine
+@onready var hurt_box: HurtBox = $HurtBox
+
+var current_hp:int = max_hp
+var direction:Vector2 = Vector2.ZERO 
+var cardinal_direction:Vector2 = Vector2.DOWN #基础方向向下
+var invulnerable:bool = false #无敌状态
 
 func _ready() -> void:
 	GlobalPlayerManager.player = self
+	hurt_box.take_damaged.connect(on_take_damaged)
 	if state_machine:
 		state_machine.initialize(self)
 
@@ -52,5 +62,27 @@ func animation_direction() -> String:
 	else:
 		anim_dir = "side"
 	return anim_dir
+	
+func on_take_damaged(hit_box:HitBox) -> void:
+	if invulnerable:
+		return
+	update_hp(-hit_box.damage)
+	if current_hp > 0:
+		player_damaged.emit(hit_box)
+	else:
+		player_destroyed.emit(hit_box)
+	
+func make_invulnerable(duration:float = 1.0) -> void:
+	if invulnerable: return
+	invulnerable = true
+	hurt_box.monitoring = false
+	
+	await get_tree().create_timer(duration).timeout
+	
+	hurt_box.monitoring = true
+	invulnerable = false
+	
+func update_hp(amount:int) -> void:
+	current_hp = clampi(current_hp + amount, 0 , max_hp) 
 	
 	

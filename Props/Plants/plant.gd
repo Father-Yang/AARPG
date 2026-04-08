@@ -3,9 +3,8 @@ class_name Plant
 
 @onready var hurt_box: HurtBox = $HurtBox
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	hurt_box.damaged.connect(on_take_damage)
+	hurt_box.take_damaged.connect(on_take_damage)
 	
-func on_take_damage(_damage:int) -> void:
+func on_take_damage(_hit_box:HitBox) -> void:
 	queue_free()
