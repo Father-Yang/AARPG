@@ -24,7 +24,7 @@ func initialize(_player:Player) -> void:
 	if states.size() > 0:
 		states[0].player = _player
 		change_state(states[0]) #执行默认状态
-	process_mode = Node.PROCESS_MODE_INHERIT #继承模式
+		process_mode = Node.PROCESS_MODE_INHERIT #继承模式
 
 func change_state(new_state:State) -> void:
 	if new_state == null || current_state == new_state:

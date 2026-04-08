@@ -9,7 +9,7 @@ func _ready() -> void:
 	
 func init() -> void: pass	
 
-func enter() -> void: pass
+func enter() -> void:pass
 	
 func exit() -> void: pass
 	

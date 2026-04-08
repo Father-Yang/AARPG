@@ -4,6 +4,9 @@
 [ext_resource type="Script" uid="uid://c1fu1y3kt1c7v" path="res://Enemies/Scripts/enemy.gd" id="1_oij8y"]
 [ext_resource type="Texture2D" uid="uid://b8bduxd7punv5" path="res://Player/Sprites/Shadow.png" id="1_wwfkb"]
 [ext_resource type="PackedScene" uid="uid://chqll71vii5yb" path="res://GeneralNodes/HurtBox/hurt_box.tscn" id="4_q0lue"]
+[ext_resource type="Script" uid="uid://bmt4rii500qyu" path="res://Enemies/Scripts/enemy_state_machine.gd" id="5_q0lue"]
+[ext_resource type="Script" uid="uid://bsorp728kf2ya" path="res://Enemies/Scripts/enemy_state_idle.gd" id="6_pg00x"]
+[ext_resource type="Script" uid="uid://qkrrco524pdm" path="res://Enemies/Scripts/enemy_state_wander.gd" id="7_jlwhn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wwfkb"]
 radius = 4.0
@@ -225,7 +228,6 @@ _data = {
 collision_layer = 256
 collision_mask = 16
 script = ExtResource("1_oij8y")
-hp = null
 
 [node name="Shadow" type="Sprite2D" parent="." unique_id=2044642728]
 modulate = Color(1.2397985, 0.42517012, 0.38637826, 0.6627451)
@@ -250,3 +252,14 @@ autoplay = &"idle_down"
 [node name="HurtBox" parent="." unique_id=1710617715 instance=ExtResource("4_q0lue")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1899298290]
+
+[node name="EnemyStateMachine" type="Node" parent="." unique_id=61848300]
+script = ExtResource("5_q0lue")
+
+[node name="Idle" type="Node" parent="EnemyStateMachine" unique_id=1415533814 node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_pg00x")
+next_state = NodePath("../Wander")
+
+[node name="Wander" type="Node" parent="EnemyStateMachine" unique_id=1291897577 node_paths=PackedStringArray("next_state")]
+script = ExtResource("7_jlwhn")
+next_state = NodePath("../Idle")

@@ -9,6 +9,7 @@ var cardinal_direction:Vector2 = Vector2.DOWN
 @onready var state_machine: PlayerStateMachine = $StateMachine
 
 func _ready() -> void:
+	GlobalPlayerManager.player = self
 	if state_machine:
 		state_machine.initialize(self)
 

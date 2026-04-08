@@ -13,6 +13,12 @@ var invulnerable:bool = false #无敌状态
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var enemy_state_machine: EnemyStateMachine = $EnemyStateMachine
+
+func _ready() -> void:
+	player = GlobalPlayerManager.player
+	if enemy_state_machine:
+		enemy_state_machine.initialize(self)
 
 func _process(_delta: float) -> void:
 	pass
@@ -20,7 +26,8 @@ func _process(_delta: float) -> void:
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
 	
-func set_direction() -> bool:
+func set_direction(_direction:Vector2) -> bool:
+	direction = _direction
 	if direction == Vector2.ZERO:
 		return false
 	var new_dir:Vector2 = cardinal_direction
