@@ -19,7 +19,7 @@ func _update_max_hp(max_hp:int) -> void:
 		
 func update_hp(current_hp:int, max_hp:int) -> void:
 	_update_max_hp(max_hp)
-	for index in max_hp:
+	for index in roundi(max_hp * 0.5):
 		_update_heart(index, current_hp)
 	
 func _update_heart(index:int, current_hp:int) -> void:

@@ -9,17 +9,16 @@ signal enemy_destroyed(hit_box:HitBox)
 
 var cardinal_direction:Vector2 = Vector2.DOWN #基础方向
 var direction:Vector2 = Vector2.ZERO
-var player:Player
 var invulnerable:bool = false #无敌状态
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var enemy_state_machine: EnemyStateMachine = $EnemyStateMachine
 @onready var hurt_box: HurtBox = $HurtBox
+@onready var hit_box: HitBox = $HitBox
 
 
 func _ready() -> void:
-	player = GlobalPlayerManager.player
 	hurt_box.take_damaged.connect(on_take_damaged)
 	if enemy_state_machine:
 		enemy_state_machine.initialize(self)

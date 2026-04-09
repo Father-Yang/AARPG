@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://i0eupp3rpy7u"]
+
+[ext_resource type="PackedScene" uid="uid://f11ona1mnlbo" path="res://TileMap/grass-01.tscn" id="1_vbl6q"]
+[ext_resource type="PackedScene" uid="uid://cs52523ji2irp" path="res://Levels/player_spwan.tscn" id="2_chooo"]
+
+[node name="01" type="Node2D" unique_id=1088120212]
+
+[node name="Grass01" parent="." unique_id=1394508690 instance=ExtResource("1_vbl6q")]
+
+[node name="PlayerSpwan" parent="." unique_id=1424801653 instance=ExtResource("2_chooo")]
+position = Vector2(208, -23)

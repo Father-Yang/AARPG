@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cs52523ji2irp"]
+
+[ext_resource type="Texture2D" uid="uid://cee2ltmkj8swx" path="res://Player/Sprites/PlayerSprite02.png" id="1_1l3un"]
+[ext_resource type="Script" uid="uid://bmef70jj38mck" path="res://Levels/player_spwan.gd" id="1_7jq81"]
+
+[node name="PlayerSpwan" type="Node2D" unique_id=1424801653]
+script = ExtResource("1_7jq81")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1489899521]
+modulate = Color(1.1070073e-06, 0.71096617, 0.23856893, 0.6156863)
+position = Vector2(0, -20)
+texture = ExtResource("1_1l3un")
+hframes = 16
+vframes = 3

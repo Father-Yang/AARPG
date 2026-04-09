@@ -13,6 +13,7 @@ func init() -> void:
 
 func enter() -> void: 
 	enemy.invulnerable = true
+	enemy.hit_box.monitoring = false #tip 怪物死亡后立刻关闭伤害框
 	_direction = enemy.global_position.direction_to(_damage_position)
 	enemy.set_direction(_direction)
 	enemy.velocity = _direction * (-knockback_speed)
