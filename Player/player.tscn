@@ -651,6 +651,8 @@ metadata/_custom_type_script = "uid://bcpeg2lusu217"
 
 [node name="Stun" type="Node" parent="StateMachine" unique_id=1849205062]
 script = ExtResource("11_gu6f8")
+knockback_speed = 200.0
+decelerate_speed = 20.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1690576]
 editor_draw_limits = true

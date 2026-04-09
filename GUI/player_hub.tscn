@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cdhc2wqet8a57"]
+
+[ext_resource type="Script" uid="uid://ddwe4aap1kyvb" path="res://GUI/player_hub.gd" id="1_5t4d8"]
+[ext_resource type="Texture2D" uid="uid://5luwls42dmig" path="res://GUI/player_hub/gui-health.png" id="1_ahcm0"]
+
+[node name="PlayerHub" type="CanvasLayer" unique_id=1526702459]
+script = ExtResource("1_5t4d8")
+
+[node name="Control" type="Control" parent="." unique_id=1476512718]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Control" unique_id=400043939]
+position = Vector2(66, 8)
+texture = ExtResource("1_ahcm0")
+region_enabled = true
+region_rect = Rect2(29, 0, 34, 8.040052)
+
+[node name="HFlowContainer" type="HFlowContainer" parent="Control" unique_id=1697329004]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 17.0
+offset_right = 131.0
+offset_bottom = 39.0
+alignment = 1
+last_wrap_alignment = 2

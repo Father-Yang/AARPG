@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GlobalLevelManager="*uid://3rnpe4jx7br2"
 GlobalPlayerManager="*uid://cwvtlya7vog2f"
+PlayerHub="*uid://cdhc2wqet8a57"
 
 [display]
 

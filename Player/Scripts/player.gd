@@ -4,7 +4,7 @@ class_name Player
 signal player_damaged(hit_box:HitBox)
 signal player_destroyed(hit_box:HitBox)
 
-@export var max_hp:int = 6
+@export var max_hp:int = 37
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var effect_animation_player: AnimationPlayer = $EffectAnimationPlayer
@@ -19,6 +19,7 @@ var invulnerable:bool = false #无敌状态
 
 func _ready() -> void:
 	GlobalPlayerManager.player = self
+	update_hp(max_hp) 
 	hurt_box.take_damaged.connect(on_take_damaged)
 	if state_machine:
 		state_machine.initialize(self)
@@ -84,5 +85,6 @@ func make_invulnerable(duration:float = 1.0) -> void:
 	
 func update_hp(amount:int) -> void:
 	current_hp = clampi(current_hp + amount, 0 , max_hp) 
+	PlayerHub.update_hp(current_hp, max_hp)
 	
 	

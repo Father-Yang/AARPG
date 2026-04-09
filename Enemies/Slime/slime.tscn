@@ -793,10 +793,14 @@ next_state = NodePath("../Idle")
 
 [node name="Stun" type="Node" parent="EnemyStateMachine" unique_id=781368807 node_paths=PackedStringArray("next_state")]
 script = ExtResource("10_pydiu")
+knockback_speed = 200.0
+decelerate_speed = 20.0
 next_state = NodePath("../Idle")
 
 [node name="Destroy" type="Node" parent="EnemyStateMachine" unique_id=805461451]
 script = ExtResource("11_2qn7y")
+knockback_speed = 200.0
+decelerate_speed = 20.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2061819294]
 volume_db = -20.0
