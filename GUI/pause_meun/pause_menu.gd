@@ -8,6 +8,8 @@ var is_paused:bool = false
 
 func _ready() -> void:
 	hide_pause_menu()
+	save_button.pressed.connect(on_save_pressed)
+	load_button.pressed.connect(on_load_pressed)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
@@ -27,3 +29,16 @@ func hide_pause_menu() -> void:
 	get_tree().paused = false
 	is_paused = false
 	hide()
+	
+func on_save_pressed() -> void:
+	if is_paused == false:
+		return 
+	GlobalSaveManager.save_game()
+	hide_pause_menu()
+
+func on_load_pressed() -> void:
+	if is_paused == false:
+		return 
+	GlobalSaveManager.load_game()
+	await GlobalLevelManager.level_load_started
+	hide_pause_menu()

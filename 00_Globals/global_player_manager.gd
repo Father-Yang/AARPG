@@ -18,6 +18,11 @@ func add_player_instance() -> void:
 func set_player_position(pos:Vector2) -> void:
 	if player:
 		player.global_position = pos
+
+func set_health(hp:int, max_hp:int) -> void:
+	player.current_hp = hp
+	player.max_hp = max_hp
+	player.update_hp(0) #tip 触发面板更新
 		
 func set_parent(parent_node:Node2D) -> void:
 	if player.get_parent():
