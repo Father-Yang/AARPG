@@ -28,7 +28,10 @@ enum SIDE {UP, DOWN, LEFT, RIGHT}
 func _ready() -> void:
 	_update_area()
 	if Engine.is_editor_hint(): return #如果这段代码在编辑器中执行则立即返回
-	monitoring = true
+	monitoring = false #防止循环调用
+	_place_player()
+	await GlobalLevelManager.level_loaded
+	monitoring = true 
 	body_entered.connect(on_body_entered)
 
 func _update_area() -> void:
@@ -58,10 +61,27 @@ func _snap_to_grid() -> void:
 	
 func on_body_entered(body:Node2D) -> void:
 	if body is Player:
-		GlobalLevelManager.load_new_level(level, target_transition_area, Vector2.ZERO) 
+		GlobalLevelManager.load_new_level(level, target_transition_area, _get_offset()) 
 
 func _place_player() -> void:
+	if name != GlobalLevelManager.target_transition: #tip 超重要的 没有这个代码就跳图了
+		return
 	GlobalPlayerManager.set_player_position(global_position + GlobalLevelManager.position_offset)
 	
 func _get_offset() -> Vector2:
-	todo
+	var offset:Vector2 = Vector2.ZERO 
+	var player_pos:Vector2 = GlobalPlayerManager.player.global_position
+	match side:
+		SIDE.UP:
+			offset.x = player_pos.x - global_position.x
+			offset.y = -16
+		SIDE.DOWN:
+			offset.x = player_pos.x - global_position.x
+			offset.y = 16
+		SIDE.LEFT:
+			offset.x = -16
+			offset.y = player_pos.y - global_position.y
+		SIDE.RIGHT:
+			offset.x = 16
+			offset.y = player_pos.y - global_position.y
+	return offset

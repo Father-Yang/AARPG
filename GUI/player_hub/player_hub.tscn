@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cdhc2wqet8a57"]
 
-[ext_resource type="Script" uid="uid://ddwe4aap1kyvb" path="res://GUI/player_hub.gd" id="1_5t4d8"]
+[ext_resource type="Script" uid="uid://ddwe4aap1kyvb" path="res://GUI/player_hub/player_hub.gd" id="1_5t4d8"]
 [ext_resource type="Texture2D" uid="uid://5luwls42dmig" path="res://GUI/player_hub/gui-health.png" id="1_ahcm0"]
 
 [node name="PlayerHub" type="CanvasLayer" unique_id=1526702459]

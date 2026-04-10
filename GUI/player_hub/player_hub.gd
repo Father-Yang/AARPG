@@ -1,14 +1,16 @@
 extends CanvasLayer
 
+#tip 这个CanvasLayer 要 layer=1
+
 var hearts:Array[HeartGUI] = [] #存放心形血条数量
 
 @onready var h_flow_container: HFlowContainer = $Control/HFlowContainer
 
-const HEART_GUI_SENCE = preload("uid://kw7be1rnxbgo")
+const HEART_GUI_SCENE = preload("uid://kw7be1rnxbgo")
 
 func _ready() -> void:
 	for i in range(20):
-		var heart_gui:HeartGUI = HEART_GUI_SENCE.instantiate()
+		var heart_gui:HeartGUI = HEART_GUI_SCENE.instantiate()
 		h_flow_container.add_child(heart_gui)
 		heart_gui.hide()
 		hearts.append(heart_gui)
