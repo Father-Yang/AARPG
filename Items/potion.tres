@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b1y2o87cmew1w"]
+
+[ext_resource type="Script" uid="uid://dk26mo3s51sr3" path="res://Items/Scripts/item_data.gd" id="1_hw0jr"]
+[ext_resource type="Texture2D" uid="uid://xv7vbfodkwkx" path="res://Items/Sprites/items.png" id="2_5vqjr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8xv6"]
+atlas = ExtResource("2_5vqjr")
+region = Rect2(32, 0, 32, 32)
+
+[resource]
+script = ExtResource("1_hw0jr")
+name = "Potion"
+description = "红色的药水可以恢复生命"
+texture = SubResource("AtlasTexture_t8xv6")
+metadata/_custom_type_script = "uid://dk26mo3s51sr3"

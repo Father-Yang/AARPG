@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://ne2kqd0uqn7a"]
+
+[ext_resource type="Texture2D" uid="uid://xv7vbfodkwkx" path="res://Items/Sprites/items.png" id="1_vdcj0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ul7rj"]
+atlas = ExtResource("1_vdcj0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vdcj0"]
+font_size = 8
+font_color = Color(0.6706895, 0.6706895, 0.6706895, 1)
+
+[node name="InventorySlot" type="Button" unique_id=1095105110]
+custom_minimum_size = Vector2(32, 32)
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=321204590]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_ul7rj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="." unique_id=1066610680]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -14.0
+offset_top = -12.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 8
+text = "99"
+label_settings = SubResource("LabelSettings_vdcj0")
+horizontal_alignment = 2

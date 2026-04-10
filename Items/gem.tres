@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://ciy1mgc0tb6n4"]
+
+[ext_resource type="Script" uid="uid://dk26mo3s51sr3" path="res://Items/Scripts/item_data.gd" id="1_kvxp5"]
+[ext_resource type="Texture2D" uid="uid://xv7vbfodkwkx" path="res://Items/Sprites/items.png" id="2_yq8b3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqhqt"]
+atlas = ExtResource("2_yq8b3")
+region = Rect2(0, 0, 32, 32)
+
+[resource]
+script = ExtResource("1_kvxp5")
+name = "Gem"
+description = "完美的绿色宝石"
+texture = SubResource("AtlasTexture_gqhqt")
+metadata/_custom_type_script = "uid://dk26mo3s51sr3"
